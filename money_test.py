@@ -64,9 +64,19 @@ def test_add_money():
     assert Money(1, USD).add(Money(2.5, USD)) == Money(3.5, USD)
 
 
+def test_add_money_magic_method():
+    assert Money(1, USD) + Money(1, USD) == Money(2, USD)
+    assert Money(1, USD) + Money(2.5, USD) == Money(3.5, USD)
+
+
 def test_sub_money():
     assert Money(2, USD).sub(Money(1, USD)) == Money(1, USD)
     assert Money(10, USD).sub(Money(3.75, USD)) == Money(6.25, USD)
+
+
+def test_sub_money_magic_method():
+    assert Money(2, USD) - Money(1, USD) == Money(1, USD)
+    assert Money(10, USD) - Money(3.75, USD) == Money(6.25, USD)
 
 
 def test_add_different_currencies():
@@ -84,6 +94,16 @@ def test_mul_money():
     assert Money(3.81, USD).mul(4) == Money(15.24, USD)
 
 
+def test_mul_money_magic_method():
+    assert Money(2.75, USD) * 3 == Money(8.25, USD)
+    assert Money(3.81, USD) * 4 == Money(15.24, USD)
+
+
 def test_div_money():
     assert Money(3, USD).div(3) == Money(1, USD)
     assert Money(12, USD).div(4) == Money(3, USD)
+
+
+def test_div_money_magic_method():
+    assert Money(3, USD) / 3 == Money(1, USD)
+    assert Money(12, USD) / 4 == Money(3, USD)

@@ -69,6 +69,38 @@ class Money:
         return (type(self) == type(other) and self.amount == other.amount and
                 self.currency == other.currency)
 
+    def __add__(self, other):
+        """
+        Add two money objects of the same currency. If they have different
+        currencies, raise a DifferentCurrencyError.
+        """
+        if self.currency == other.currency:
+            return Money(self.amount + other.amount, self.currency)
+        else:
+            raise DifferentCurrencyError
+
+    def __sub__(self, other):
+        """
+        Subtract two money objects of the same currency. If they have different
+        currencies, raise a DifferentCurrencyError.
+        """
+        if self.currency == other.currency:
+            return Money(self.amount - other.amount, self.currency)
+        else:
+            raise DifferentCurrencyError
+
+    def __mul__(self, multiplier):
+        """
+        Multiply a money object by a number to get a new money object.
+        """
+        return Money(self.amount * multiplier, self.currency)
+
+    def __truediv__(self, divisor):
+        """
+        Divide a money object by a number to get a new money object.
+        """
+        return Money(self.amount / divisor, self.currency)
+
     def add(self, other):
         """
         Add two money objects of the same currency. If they have different
