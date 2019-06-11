@@ -1,4 +1,7 @@
 class DifferentCurrencyError(Exception):
+    """
+    Raised when two money objects with different currencies are added or subtracted.
+    """
     pass
 
 
